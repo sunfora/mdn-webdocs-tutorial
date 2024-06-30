@@ -1,0 +1,34 @@
+li em {
+  color: rebeccapurple;
+}
+
+h1 + p {
+  font-size: 200%;
+}
+
+body h1 + p .special {
+  color: yellow;
+  background-color: black;
+  padding: 5px;
+}
+
+p span .special {
+  color: red;
+}
+
+a:link {
+  font-weight: bold;
+  color: pink;
+}
+
+a:visited {
+  color: purple;
+}
+
+a:hover {
+  text-decoration: none;
+  background: black;
+}
+
+
+

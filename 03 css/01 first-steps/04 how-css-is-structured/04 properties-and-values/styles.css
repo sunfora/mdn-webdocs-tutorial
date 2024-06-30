@@ -1,0 +1,67 @@
+html {
+  height: 100%;
+  background: linear-gradient(45deg, black, 75%, orange);
+  color: white;
+}
+
+#styled {
+  color: black;
+  background-color: gold;
+}
+
+#styled:hover {
+  color: white;
+  background-color: pink;
+}
+
+#starwars-container {
+  perspective: 500px;
+  padding-left: 100px;
+}
+
+#starwars {
+  position: relative;
+  size: 100%;
+  color: yellow;
+  transform: rotateX(35deg);
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 25px;
+}
+
+div.group {
+}
+
+main {
+  float: left;
+}
+
+aside {
+  border: 1px solid white;
+  padding-left: 5px;
+  width: 200px;
+  float: right;
+}
+
+aside strong {
+  background-color: white;
+  color: black;
+}
+
+
+@media (max-width: 1000px) {
+  aside {
+    float: unset;
+  }
+  main {
+    float: none;
+  }
+  html {
+    background: linear-gradient(black, 75%, aliceblue);
+  }
+}

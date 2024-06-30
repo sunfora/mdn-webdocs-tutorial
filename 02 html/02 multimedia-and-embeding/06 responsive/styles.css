@@ -1,0 +1,16 @@
+body {
+  margin: 0 auto;
+  width: 90vw;
+  text-align: center;
+}
+
+img[src="media/volga.jpg"] {
+  width: 640px;
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+}

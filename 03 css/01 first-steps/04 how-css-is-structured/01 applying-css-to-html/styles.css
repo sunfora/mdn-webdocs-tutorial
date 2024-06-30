@@ -1,0 +1,45 @@
+h1 {
+  color: black;
+  background: azure;
+}
+
+a:link {
+  background: black;
+  color: gold;
+}
+
+a:visited {
+  background: black;
+  color: silver;
+}
+
+.manythings {
+  font-family: monospace; 
+}
+
+#onething {
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 70px;
+  margin: 0;
+}
+
+* {
+  width: 600px;
+}
+
+.box p {
+  background: honeydew;
+}
+
+.box p:first-child {
+  border: solid 1px orange;
+  background: black;
+  color: white;
+}
+
+h1, h2, .intro {
+  border: solid 1px black;
+  font-family: "Open Sans"; 
+	font-weight: lighter;
+  font-size: 20px;
+}
