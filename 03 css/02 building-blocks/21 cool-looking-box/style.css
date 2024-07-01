@@ -1,0 +1,46 @@
+html {
+  font-family: sans-serif;
+}
+
+/* Your CSS below here */
+div {
+  /* box sizes and layout */
+  box-sizing: border-box;
+  --box-width: calc(12em);
+  --box-height: calc(8em);
+  /* assuming default font style is 16px in height */
+  --font-size: calc((18 / 16) * 1rem);
+  --border-size: calc((1 / 18) * 1em);
+
+  margin: auto;
+
+  width: var(--box-width);
+  height: var(--box-height);
+  font-size: var(--font-size);
+
+  /* center the text vertically and horizontally */
+  padding: calc((var(--box-height) - var(--font-size) - 2 * var(--border-size)) / 2) 0em;
+  text-align: center;
+  
+  /* box content styles */
+  color: #fff5dc; 
+  text-shadow: 0.05em 0.05em 0.05em black;
+
+  /* box background and shadow styles */
+  background-color: yellowgreen;
+  
+  background-image: 
+    linear-gradient(
+      to right bottom, 
+      rgb(0, 0, 0, 0),
+      rgb(0, 0, 0, 0.2) 30%
+    );
+
+  border-radius: 0.5em;
+  border: var(--border-size) solid #769a2d;
+
+  box-shadow: 
+           0.1em  0.1em 0.3em black,
+    inset  0.1em  0.1em 0.2em white,
+    inset -0.1em -0.1em 0.2em black;
+}
