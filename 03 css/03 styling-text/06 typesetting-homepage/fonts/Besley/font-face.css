@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Besley"; 
+  src: 
+    url("static/Besley-Regular.woff2") format("woff2"),
+    url("static/Besley-Regular.woff")  format("woff"),
+    url("static/Besley-Regular.ttf")   format("ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Besley"; 
+  src: 
+    url("static/Besley-Bold.woff2") format("woff2"),
+    url("static/Besley-Bold.woff")  format("woff"),
+    url("static/Besley-Bold.ttf")   format("ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Besley"; 
+  src: 
+    url("static/Besley-Italic.woff2") format("woff2"),
+    url("static/Besley-Italic.woff")  format("woff"),
+    url("static/Besley-Italic.ttf")   format("ttf");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Besley"; 
+  src: 
+    url("static/Besley-BoldItalic.woff2") format("woff2"),
+    url("static/Besley-BoldItalic.woff")  format("woff"),
+    url("static/Besley-BoldItalic.ttf")   format("ttf");
+  font-style: italic;
+  font-weight: 700;
+}

@@ -1,16 +1,19 @@
 /* General setup */
+@import url("fonts/Wittgenstein/font-face.css");
+@import url("fonts/Besley/font-face.css");
 
 * {
   box-sizing: border-box;
 }
+
+
+/* Layout */
 
 body {
   margin: 0 auto;
   min-width: 1000px;
   max-width: 1400px;
 }
-
-/* Layout */
 
 section {
   float: left;
@@ -43,3 +46,112 @@ header, footer {
 }
 
 /* WRITE YOUR CODE BELOW HERE */
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  word-spacing: 0.40em;
+  letter-spacing: 0.02em;
+  font-family: "Wittgenstein", serif;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+h1, h2 {
+  font-family: "Besley", serif;
+}
+
+p {
+  text-indent: 1.2em;
+}
+
+a {
+  color: #622626;
+}
+
+a[href^="http"]::after {
+  display: inline-block;
+  content: "⤤";
+
+  outline: 0.01rem solid currentcolor;
+  line-height: 1;
+
+  text-decoration: none;
+  margin-left: 0.3rem;
+  text-indent: 0;
+}
+
+a:visited {
+  color: #555;
+}
+
+a:focus {
+  color: white;
+  background-color: black;
+  outline: 0.1rem dotted black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: #351d28;
+  outline: none;
+  text-decoration: none;
+}
+
+ul {
+  list-style: square;
+}
+aside ul {
+  list-style: " - ";
+}
+
+ol {
+  list-style: lower-alpha;
+}
+
+nav {
+  position: sticky;
+  top: 2rem;
+  padding-right: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li a {
+  display: block;
+  height: 7rem;
+  padding: calc((7rem - 1em) / 2) 2rem;
+
+  font-size: 2rem;
+  line-height: 1;
+  color: black;
+  text-decoration: none;
+
+  border-inline-start: 0.25em double #2e2e0f;
+  background-color: #fafaff;
+
+  transition-duration: 0.2s;
+}
+
+nav li a:visited {
+  color: black;
+}
+
+nav li a {
+  &:hover, &:focus {
+    background-color: #333;
+    border-inline-start: 0.25em solid #a66;
+    color: #fafafe;
+  }
+}
