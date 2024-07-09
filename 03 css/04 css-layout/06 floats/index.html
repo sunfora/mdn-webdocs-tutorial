@@ -28,25 +28,37 @@
         margin: 1.2em;
       }
 
-      p:first-of-type {
+      /*
+       *  
+       * .cleared {
+       *   clear: inline-start;
+       * }
+       *
+       */
+
+      .wrapper {
         background-color: rgb(148 255 172);
         padding: 10px;
         color: purple;
+        display: flow-root;
       }
+
    </style>
   </head>
   <body>
     <h1>float example</h1>
-    <div class="box">float</div>
+    <div class="wrapper">
+      <div class="box">Float1</div>
 
-    <p>
-      lorem ipsum dolor sit amet, consectetur adipiscing elit. nulla luctus aliquam
-      dolor, eu lacinia lorem placerat vulputate. duis felis orci, pulvinar id metus
-      ut, rutrum luctus orci. cras porttitor imperdiet nunc, at ultricies tellus
-      laoreet sit amet.
-    </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+        aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+        pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+        ultricies tellus laoreet sit amet.
+      </p>
+    </div>
 
-    <p>
+    <p class="cleared">
       sed auctor cursus massa at porta. integer ligula ipsum, tristique sit amet
       orci vel, viverra egestas ligula. curabitur vehicula tellus neque, ac ornare
       ex malesuada et. in vitae convallis lacus. aliquam erat volutpat. suspendisse
