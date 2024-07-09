@@ -39,7 +39,7 @@
         grid-area: header;
       }
 
-      article {
+      .articles {
         grid-area: content;
       }
 
@@ -49,6 +49,12 @@
 
       footer {
         grid-area: footer;
+      }
+
+      .articles {
+        display: grid;
+        grid-template-rows: 2fr 1fr 1fr;
+        gap: inherit;
       }
 
       article {
@@ -89,7 +95,7 @@
           </p>
         </article>
         <article>
-          <h1>My article</h1>
+          <h1>Fyi aregre</h1>
           <p>
             Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras
             porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed
