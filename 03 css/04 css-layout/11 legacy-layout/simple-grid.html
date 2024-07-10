@@ -10,62 +10,70 @@
       }
 
       body {
-        width: 980px;
+        width: 90%;
+        max-width: 980px;
         margin: 0 auto;
       }
 
       .wrapper {
-        padding-right: 20px;
+        padding-right: 2.08333333%;
       }
+
       .row {
         clear: both;
       }
 
       .col {
         float: left;
-        margin-left: 20px;
-        width: 60px;
+        margin-left: 2.08333333%;
+        width: 6.25%;
         background: rgb(255 150 150);
       }
 
-      /* Two column widths (120px) plus one gutter width (20px) */
+      /* Two column widths (12.5%) plus one gutter width (2.08333333%) */
       .col.span2 {
-        width: 140px;
+        width: calc((6.25% * 2) + (2.08333333% * 1));
       }
-      /* Three column widths (180px) plus two gutter widths (40px) */
+      /* Three column widths (18.75%) plus two gutter widths (4.1666666) */
       .col.span3 {
-        width: 220px;
+        width: calc((6.25% * 3) + (2.08333333% * 2));
       }
       /* And so on… */
       .col.span4 {
-        width: 300px;
+        width: calc((6.25% * 4) + (2.08333333% * 3));
       }
       .col.span5 {
-        width: 380px;
+        width: calc((6.25% * 5) + (2.08333333% * 4));
       }
       .col.span6 {
-        width: 460px;
+        width: calc((6.25% * 6) + (2.08333333% * 5));
       }
       .col.span7 {
-        width: 540px;
+        width: calc((6.25% * 7) + (2.08333333% * 6));
       }
       .col.span8 {
-        width: 620px;
+        width: calc((6.25% * 8) + (2.08333333% * 7));
       }
       .col.span9 {
-        width: 700px;
+        width: calc((6.25% * 9) + (2.08333333% * 8));
       }
       .col.span10 {
-        width: 780px;
+        width: calc((6.25% * 10) + (2.08333333% * 9));
       }
       .col.span11 {
-        width: 860px;
+        width: calc((6.25% * 11) + (2.08333333% * 10));
       }
       .col.span12 {
-        width: 940px;
+        width: calc((6.25% * 12) + (2.08333333% * 11));
       }
+
+      .offset-by-one {
+        margin-left: calc(6.25% + (2.08333333% * 2));
+      }
+
+
       .big {
-        height: 120px;
+        height: 10em;
       }
     </style>
   </head>
