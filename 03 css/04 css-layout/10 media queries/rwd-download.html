@@ -80,6 +80,41 @@
         padding: 0.5em 1em;
         color: #fff;
       }
+      
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 400px);
+        gap: 40px;
+      }
+
+      @media screen and (width >= 77.5em) {
+        header {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        header .title {
+          justify-self: start;
+        }
+        header nav {
+          align-self: center;
+          justify-self: end;
+        }
+        header nav ul {
+          display: flex;
+          flex-direction: row;
+        }
+        header a {
+          border: 0;
+        }
+        main {
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 40px;
+        }
+        aside {
+          margin-top: 1.5em;
+        }
+      }
     </style>
   </head>
 
