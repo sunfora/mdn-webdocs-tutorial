@@ -5,8 +5,37 @@
     <meta name="viewport" content="width=device-width">
     <title>Apply JavaScript example</title>
     <script src="button.js" defer></script>
+    <style>
+      button {
+        margin: 40px;
+      }
+      .buttons {
+        display: flex;
+        border: 1px solid black;
+      }
+
+      .results {
+        overflow: scroll;
+        height: 500px;
+        border: 1px solid black;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(auto, 200px));
+        grid-auto-rows: min-content; 
+      }
+    </style>
   </head>
   <body>
-    <button>Click me</button>
+    <div class="buttons">
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+      <button>Click me</button>
+    </div>
+    <div class="results">
+    </div>
   </body>
 </html>
