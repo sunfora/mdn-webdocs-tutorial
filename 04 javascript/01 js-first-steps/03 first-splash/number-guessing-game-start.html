@@ -46,7 +46,9 @@
     </div>
 
     <script>
-      let randomNumber = Math.floor(Math.random() * 100) + 1;
+      let randomNumber;
+      let guessCount; 
+      let resetButton;
 
       const guesses = document.querySelector(".guesses");
       const lastResult = document.querySelector(".lastResult");
@@ -55,9 +57,7 @@
       const guessSubmit = document.querySelector(".guessSubmit");
       const guessField = document.querySelector(".guessField");
 
-      let guessCount = 1;
-      let resetButton;
-
+      resetGame();
 
       function checkGuess() {
         const userGuess = Number(guessField.value);
@@ -112,8 +112,11 @@
         for (const resetPara of resetParas) {
           resetPara.textContent = "";
         }
-
-        resetButton.remove();
+        
+        if (resetButton !== undefined) {
+          resetButton.remove();
+          resetButton = undefined;
+        }
 
         guessField.disabled = false;
         guessSubmit.disabled = false;
