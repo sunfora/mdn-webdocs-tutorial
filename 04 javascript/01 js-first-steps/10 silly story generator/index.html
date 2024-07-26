@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-
+  
     <title>Silly story generator</title>
-
+    <script src="main.js" defer> </script>
     <style>
       body {
         font-family: helvetica, sans-serif;
@@ -42,21 +42,30 @@
         border: calc(1/16 * 1em) solid #999;
         transition: 0.1s all ease;
         margin-right: calc(5/16 * 1em);
-
         position: relative;
         top: calc(1.5/16 * 1em);
       }
 
       input[type="radio"]:checked {
-        border: calc(6/16 * 1em) solid #00a0df;
+        border: calc(6/16 * 1em) solid #00a0ef;
       }
 
       button {
+        padding: 0 0.8em;
         background-color: white;
         border-radius: 0.4em;
-        border-width: 0.15em;
+        border-width: 0.05em;
         box-shadow: 0.05em 0.08em 0.1em rgb(0, 0, 0, 0.2);
+        transition: 0.1s;
+        transform: scale(1.015) translate(0, 0.01em);
       }
+
+      button:active {
+        border-style: inset;
+        transform: none;
+        box-shadow: inset 0.05em 0.08em 0.1em rgb(0, 0, 0, 0.2);
+      }
+
     </style>
   </head>
 
