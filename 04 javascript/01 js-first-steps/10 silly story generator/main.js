@@ -39,7 +39,7 @@ function temperature(fahrenheit, country) {
     case "us":
       return `${fahrenheit} fahrenheit`;
     case "uk":
-      return `${celcius(fahrenheit)} celcius`;
+      return `${celcius(fahrenheit)} centigrade`;
     default:
       throw new Error(`Country ${country} is not supported`);
   }
