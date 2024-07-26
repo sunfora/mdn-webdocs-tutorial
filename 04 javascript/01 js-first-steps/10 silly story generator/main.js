@@ -46,11 +46,12 @@ function temperature(fahrenheit, country) {
 }
 
 function weight(lbs, country) {
-  const metricFactor = 0.453592;
-
   const suffix = (weight) => {
     return weight % 10 === 1? "": "s";
   }
+  
+  const stones = lbs => Math.round(lbs * 0.0714286);
+  const kilograms = lbs => Math.round(lbs * 0.453592);
 
   switch (country) {
     case "us": {
@@ -58,8 +59,8 @@ function weight(lbs, country) {
       return `${weight} pound${suffix(weight)}`;
     }
     case "uk": {
-      const weight = Math.round(metricFactor * lbs);
-      return `${weight} kilogram${suffix(weight)}`;
+      const weight = stones(lbs);
+      return `${weight} stone${suffix(weight)}`;
     }
     default:
       throw new Error(`Country ${country} is not supported`);
