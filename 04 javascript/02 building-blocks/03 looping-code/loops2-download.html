@@ -41,6 +41,12 @@
     ]
 
     // Add your code here
+    para.textContent = "unknown";
+    for (const contact of phonebook) {
+      if (contact.name === name) {
+        para.textContent = `name: ${name}, phone: ${contact.number}`;
+      }
+    }
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
