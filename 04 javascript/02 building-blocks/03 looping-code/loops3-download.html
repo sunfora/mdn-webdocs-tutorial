@@ -41,6 +41,16 @@
 
 
     // Add your code here
+    do {
+      if (isPrime(i)) {
+        para.textContent += i;
+        para.textContent += ", ";
+      }
+      i -= 1;
+    } while(i > 2);
+    para.textContent += 2;
+    para.textContent += ".";
+
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
