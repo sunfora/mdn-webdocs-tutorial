@@ -36,7 +36,9 @@
     <button>Display message box</button>
 
     <script>
-      function displayMessage() {
+      "use strict";
+
+      function displayMessage(msgText, msgType) {
         const body = document.body;
 
         const panel = document.createElement("div");
@@ -44,7 +46,7 @@
         body.appendChild(panel);
 
         const msg = document.createElement("p");
-        msg.textContent = "This is a message box";
+        msg.textContent = msgText;
         panel.appendChild(msg);
 
         const closeBtn = document.createElement("button");
@@ -55,7 +57,9 @@
       }
 
       const displayBtn = document.querySelector("button");
-      displayBtn.addEventListener("click", displayMessage);
+      displayBtn.addEventListener("click", () => displayMessage(
+        "Woohoo different msg type!"
+      ));
     </script>
   </body>
 </html>
