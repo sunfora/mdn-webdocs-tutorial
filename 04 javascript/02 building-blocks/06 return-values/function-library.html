@@ -37,7 +37,17 @@
         }
         return num;
       }
-
+    
+      function cubeRoot(num) {
+        const f = x => x / 2 + num / (2 * x * x);
+        const eps = 1e-6;
+        let guess = 1;
+        while (Math.abs(guess - f(guess)) > eps) {
+          guess = f(guess);
+        }
+        return guess;
+      }
+    
       input.addEventListener("change", () => {
         const num = parseFloat(input.value);
         if (isNaN(num)) {
@@ -46,6 +56,7 @@
           para.textContent = `${num} squared is ${squared(num)}. `;
           para.textContent += `${num} cubed is ${cubed(num)}. `;
           para.textContent += `${num} factorial is ${factorial(num)}. `;
+          para.textContent += `${num} cube root is ${cubeRoot(num)}. `;
         }
       });
 
