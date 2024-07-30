@@ -24,7 +24,11 @@
         document.body.style.backgroundColor = rndCol;
       }
 
-      btn.addEventListener('click', changeColor);
+      btn.addEventListener('dblclick', changeColor);
+      btn.addEventListener('focus', changeColor);
+      btn.addEventListener('blur', changeColor);
+      btn.addEventListener('mouseover', changeColor);
+      btn.addEventListener('mouseout', changeColor);
     </script>
   </body>
 </html>
