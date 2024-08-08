@@ -231,7 +231,11 @@ while (balls.length < 25) {
   balls.push(ball);
 }
 
+const counter = document.querySelector("p");
 function loop() {
+  counter.textContent = `Ball count: ${balls.filter(x => x.exists).length}`;
+
+
   ctx.fillStyle = "rgb(0 0 0 / 25%)";
   ctx.fillRect(0, 0, width, height);
 
