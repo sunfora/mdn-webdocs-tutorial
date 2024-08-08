@@ -57,6 +57,45 @@ class Ball {
     this.y += this.velY;
   }
 
+  velExchange(ball) {
+    const x_1 = [this.x, this.y];
+    const x_2 = [ball.x, ball.y];
+
+    const v_1 = [this.velX, this.velY];
+    const v_2 = [ball.velX, ball.velY];
+
+    const m_1 = this.size ** 2;
+    const m_2 = ball.size ** 2;
+
+    [this.velX, this.velY] = ptdiff(
+      v_1,
+      scale(
+        (2 * m_2) / (m_1 + m_2)
+        *
+        dot(
+          ptdiff(v_1, v_2),
+          ptdiff(x_1, x_2))
+        /
+        dot(
+          ptdiff(x_1, x_2),
+          ptdiff(x_1, x_2)),
+        ptdiff(x_1, x_2)));
+
+    [ball.velX, ball.velY] = ptdiff(
+      v_2,
+      scale(
+        (2 * m_1) / (m_1 + m_2)
+        *
+        dot(
+          ptdiff(v_2, v_1),
+          ptdiff(x_2, x_1))
+        /
+        dot(
+          ptdiff(x_2, x_1),
+          ptdiff(x_2, x_1)),
+        ptdiff(x_2, x_1)));
+  }
+
   collisionDetect() {
     for (const ball of balls) {
       if (this !== ball) {
@@ -69,6 +108,7 @@ class Ball {
         if (hasCollision && !this.cwith.get(ball)) {
           this.cwith.set(ball, true);
           ball.cwith.set(this, true);
+          this.velExchange(ball);
           ball.color = this.color = randomRGB();
         } else if (!hasCollision) {
           this.cwith.delete(ball);
@@ -77,6 +117,19 @@ class Ball {
       }
     }
   }
+}
+
+
+function ptdiff([a, b], [c, d]) {
+  return [a - c, b - d];
+}
+
+function scale(a, [x, y]) {
+  return [a * x, a * y];
+}
+
+function dot([a, b], [c, d]) {
+  return a * c + b * d;
 }
 
 const balls = [];
@@ -88,10 +141,10 @@ while (balls.length < 25) {
     // away from the edge of the canvas, to avoid drawing errors
     random(0 + size, width - size),
     random(0 + size, height - size),
-    random(-7, 7) * 0.05,
-    random(-7, 7) * 0.05,
+    random(-7, 7) * 0.5,
+    random(-7, 7) * 0.5,
     randomRGB(),
-    size * 4
+    size
   );
 
   balls.push(ball);
