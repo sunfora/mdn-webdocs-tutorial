@@ -26,6 +26,58 @@ class Shape {
   }
 }
 
+class EvilCircle extends Shape {
+  constructor(x, y) {
+    super(x, y, 20, 20);
+    this.color = "white";
+    this.size = 10;
+  }
+
+  move(keydownEvent) {
+    switch (keydownEvent.key) {
+      case "a":
+        this.x -= this.velX;
+        break;
+      case "d":
+        this.x += this.velX;
+        break;
+      case "w":
+        this.y -= this.velY;
+        break;
+      case "s":
+        this.y += this.velY;
+        break;
+    }
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.strokeStyle = this.color;
+    ctx.lineWidth = 3;
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+
+  update() {
+    if ((this.x + this.size) >= width) {
+      this.x -= this.size;
+    }
+
+    if ((this.x - this.size) <= 0) {
+      this.x += this.size;
+    }
+
+    if ((this.y + this.size) >= height) {
+      this.y -= this.size;
+    }
+
+    if ((this.y - this.size) <= 0) {
+      this.y += this.size;
+    }
+  }
+
+}
+
 class Ball extends Shape {
   constructor(x, y, velX, velY, color, size) {
     super(x, y, velX, velY);
@@ -140,6 +192,10 @@ function dot([a, b], [c, d]) {
 
 const balls = [];
 
+const user = new EvilCircle(0, 0);
+user.x = random(user.size, width - user.size);
+user.y = random(user.size, height - user.size);
+
 while (balls.length < 25) {
   const size = random(10, 20);
   const ball = new Ball(
@@ -160,6 +216,9 @@ function loop() {
   ctx.fillStyle = "rgb(0 0 0 / 25%)";
   ctx.fillRect(0, 0, width, height);
 
+  user.draw();
+  user.update();
+
   for (const ball of balls) {
     ball.draw();
     ball.update();
@@ -171,4 +230,7 @@ function loop() {
 
 ctx.fillStyle = "rgb(0 0 0 / 100%)";
 ctx.fillRect(0, 0, width, height);
+
+window.addEventListener("keydown", e => user.move(e));
+
 loop();
