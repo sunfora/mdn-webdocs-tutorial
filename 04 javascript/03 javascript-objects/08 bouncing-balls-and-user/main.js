@@ -31,22 +31,25 @@ class EvilCircle extends Shape {
     super(x, y, 20, 20);
     this.color = "white";
     this.size = 10;
+    this.keys = new Set();
   }
 
-  move(keydownEvent) {
-    switch (keydownEvent.key) {
-      case "a":
-        this.x -= this.velX;
-        break;
-      case "d":
-        this.x += this.velX;
-        break;
-      case "w":
-        this.y -= this.velY;
-        break;
-      case "s":
-        this.y += this.velY;
-        break;
+  move() {
+    for (const key of this.keys) {
+      switch (key) {
+        case "a":
+          this.x -= this.velX;
+          break;
+        case "d":
+          this.x += this.velX;
+          break;
+        case "w":
+          this.y -= this.velY;
+          break;
+        case "s":
+          this.y += this.velY;
+          break;
+      }
     }
   }
 
@@ -58,7 +61,7 @@ class EvilCircle extends Shape {
     ctx.stroke();
   }
 
-  update() {
+  checkBounds() {
     if ((this.x + this.size) >= width) {
       this.x -= this.size;
     }
@@ -76,6 +79,22 @@ class EvilCircle extends Shape {
     }
   }
 
+  collisionDetect() {
+    for (const ball of balls.filter(x => x.exists)) {
+      const dx = this.x - ball.x;
+      const dy = this.y - ball.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      const hasCollision = distance < this.size + ball.size;
+
+      if (hasCollision) {
+        ball.exists = false;
+        this.size += ball.size / 10;
+        this.velX = 20 / (this.size / 10);
+        this.velY = 20 / (this.size / 10);
+      }
+    }
+  }
 }
 
 class Ball extends Shape {
@@ -217,9 +236,11 @@ function loop() {
   ctx.fillRect(0, 0, width, height);
 
   user.draw();
-  user.update();
+  user.move();
+  user.checkBounds();
+  user.collisionDetect();
 
-  for (const ball of balls) {
+  for (const ball of balls.filter(x => x.exists)) {
     ball.draw();
     ball.update();
     ball.collisionDetect();
@@ -231,6 +252,14 @@ function loop() {
 ctx.fillStyle = "rgb(0 0 0 / 100%)";
 ctx.fillRect(0, 0, width, height);
 
-window.addEventListener("keydown", e => user.move(e));
+window.addEventListener("keydown", e => 
+  {
+    user.keys.add(e.key);
+  }
+);
+
+window.addEventListener("keyup", e => {
+  user.keys.delete(e.key);
+});
 
 loop();
