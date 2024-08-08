@@ -64,8 +64,8 @@ class Ball {
     const v_1 = [this.velX, this.velY];
     const v_2 = [ball.velX, ball.velY];
 
-    const m_1 = this.size ** 2;
-    const m_2 = ball.size ** 2;
+    const m_1 = this.size ** 3;
+    const m_2 = ball.size ** 3;
 
     [this.velX, this.velY] = ptdiff(
       v_1,
@@ -141,8 +141,8 @@ while (balls.length < 25) {
     // away from the edge of the canvas, to avoid drawing errors
     random(0 + size, width - size),
     random(0 + size, height - size),
-    random(-7, 7) * 0.5,
-    random(-7, 7) * 0.5,
+    random(-7, 7),
+    random(-7, 7),
     randomRGB(),
     size
   );
