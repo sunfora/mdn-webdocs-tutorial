@@ -79,8 +79,8 @@ class EvilCircle extends Shape {
     }
   }
 
-  collisionDetect() {
-    for (const ball of balls.filter(x => x.exists)) {
+  collisionDetect(balls) {
+    for (const ball of balls) {
       const dx = this.x - ball.x;
       const dy = this.y - ball.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
@@ -173,8 +173,8 @@ class Ball extends Shape {
         ptdiff(x_2, x_1)));
   }
 
-  collisionDetect() {
-    for (const ball of balls.filter(x => x.exists)) {
+  collisionDetect(balls) {
+    for (const ball of balls) {
       if (this !== ball) {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
@@ -209,61 +209,109 @@ function dot([a, b], [c, d]) {
   return a * c + b * d;
 }
 
-const balls = [];
+function startGame() {
+  const start = Date.now();
 
-const user = new EvilCircle(0, 0);
-user.x = random(user.size, width - user.size);
-user.y = random(user.size, height - user.size);
-
-while (balls.length < 25) {
-  const size = random(10, 20);
-  const ball = new Ball(
-    // ball position always drawn at least one ball width
-    // away from the edge of the canvas, to avoid drawing errors
-    random(0 + size, width - size),
-    random(0 + size, height - size),
-    random(-7, 7),
-    random(-7, 7),
-    randomRGB(),
-    size
-  );
-
-  balls.push(ball);
-}
-
-const counter = document.querySelector("p");
-function loop() {
-  counter.textContent = `Ball count: ${balls.filter(x => x.exists).length}`;
-
-
-  ctx.fillStyle = "rgb(0 0 0 / 25%)";
+  ctx.fillStyle = "rgb(0 0 0 / 100%)";
   ctx.fillRect(0, 0, width, height);
 
-  user.draw();
-  user.move();
-  user.checkBounds();
-  user.collisionDetect();
 
-  for (const ball of balls.filter(x => x.exists)) {
-    ball.draw();
-    ball.update();
-    ball.collisionDetect();
+  const user = new EvilCircle(0, 0);
+  user.x = random(user.size, width - user.size);
+  user.y = random(user.size, height - user.size);
+
+  const balls = [];
+
+  while (balls.length < 25) {
+    const size = random(10, 20);
+    const ball = new Ball(
+      // ball position always drawn at least one ball width
+      // away from the edge of the canvas, to avoid drawing errors
+      random(0 + size, width - size),
+      random(0 + size, height - size),
+      random(-7, 7),
+      random(-7, 7),
+      randomRGB(),
+      size
+    );
+
+    balls.push(ball);
   }
 
-  requestAnimationFrame(loop);
+  const controller = new AbortController();
+
+  window.addEventListener("keydown", e => 
+    {
+      user.keys.add(e.key);
+    },
+    {signal: controller.signal}
+  );
+
+  window.addEventListener("keyup", e => {
+    user.keys.delete(e.key);
+  },
+    {signal: controller.signal}
+  );
+
+  const counter = document.querySelector(".counter");
+
+  function loop() {
+    const remaining = balls.filter(x => x.exists);
+    counter.textContent = `Ball count: ${remaining.length}`;
+
+    ctx.fillStyle = "rgb(0 0 0 / 25%)";
+    ctx.fillRect(0, 0, width, height);
+
+    for (const ball of balls.filter(x => x.exists)) {
+      ball.draw();
+      ball.update();
+      ball.collisionDetect(remaining);
+    }
+
+    user.draw();
+    user.move();
+    user.checkBounds();
+    user.collisionDetect(remaining);
+
+    
+    if (remaining.length) { 
+      requestAnimationFrame(loop);
+    } else {
+      endGame();
+    }
+  }
+
+  function endGame() {
+    controller.abort();
+
+    ctx.fillStyle = "rgb(0 0 0 / 100%)";
+    ctx.fillRect(0, 0, width, height);
+
+    const results = document.createElement("div");
+    results.classList.add("results");
+    
+    const header = document.createElement("h2");
+    header.textContent = "Game Over";
+
+    const time = document.createElement("p");
+    const seconds = Math.floor((Date.now() - start) / 1000);
+    time.textContent = `time: ${seconds}s`;
+   
+    const button = document.createElement("button");
+    button.textContent = "restart";
+    button.addEventListener("click", () => {
+      results.remove();
+      startGame()
+    });
+
+    results.appendChild(header);
+    results.appendChild(time);
+    results.appendChild(button);
+
+    document.body.appendChild(results);
+  }
+
+  loop();
 }
 
-ctx.fillStyle = "rgb(0 0 0 / 100%)";
-ctx.fillRect(0, 0, width, height);
-
-window.addEventListener("keydown", e => 
-  {
-    user.keys.add(e.key);
-  }
-);
-
-window.addEventListener("keyup", e => {
-  user.keys.delete(e.key);
-});
-
-loop();
+startGame();

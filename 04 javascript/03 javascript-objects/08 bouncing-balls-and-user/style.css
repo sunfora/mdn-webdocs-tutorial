@@ -24,10 +24,36 @@ h1 {
   text-shadow: 0 0 4px white;
 }
 
-p {
+.counter {
   position: absolute;
   margin: 0;
   top: 35px;
   right: 5px;
   color: #aaa;
+}
+
+.results {
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  padding: 1em;
+  
+  border-radius: 1em;
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  button {
+    background-color: gold;
+    border-radius: 1em;
+    border-style: none;
+    padding: 0.5em;
+    font-size: 1em;
+    width: 100%;
+  }
 }
