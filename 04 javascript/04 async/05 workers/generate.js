@@ -2,12 +2,12 @@
 // If the message command is "generate", call `generatePrimes()`
 addEventListener("message", (message) => {
   if (message.data.command === "generate") {
-    generatePrimes(message.data.quota);
+    generatePrimes(message.data.quota, message.data.id);
   }
 });
 
 // Generate primes (very inefficiently)
-function generatePrimes(quota) {
+function generatePrimes(quota, id) {
   function isPrime(n) {
     for (let c = 2; c <= Math.sqrt(n); ++c) {
       if (n % c === 0) {
@@ -29,5 +29,5 @@ function generatePrimes(quota) {
 
   // When we have finished, send a message to the main thread,
   // including the number of primes we generated.
-  postMessage(primes.length);
+  postMessage({value: primes, id: id});
 }
