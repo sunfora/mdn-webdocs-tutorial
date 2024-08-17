@@ -17,6 +17,11 @@ function animation(alice) {
   return alice.animate(aliceTumbling, aliceTiming);
 }
 
-animation(alice1).finished 
-  .then(() => animation(alice2).finished)
-  .then(() => animation(alice3).finished);
+async function animateAlices() {
+  for (const alice of [alice1, alice2, alice3]) {
+    const tumble = animation(alice);
+    await tumble.finished;
+  }
+}
+
+animateAlices();
