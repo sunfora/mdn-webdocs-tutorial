@@ -13,8 +13,10 @@ const alice1 = document.querySelector("#alice1");
 const alice2 = document.querySelector("#alice2");
 const alice3 = document.querySelector("#alice3");
 
-alice1.animate(aliceTumbling, aliceTiming).finished
-  .then(
-        () => alice2.animate(aliceTumbling, aliceTiming).finished
-                .then(
-                  () => alice3.animate(aliceTumbling, aliceTiming)));
+function animation(alice) {
+  return alice.animate(aliceTumbling, aliceTiming);
+}
+
+animation(alice1).finished 
+  .then(() => animation(alice2).finished)
+  .then(() => animation(alice3).finished);
