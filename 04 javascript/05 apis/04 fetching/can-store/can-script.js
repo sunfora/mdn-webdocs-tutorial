@@ -106,9 +106,7 @@ function initialize(products) {
   // start the process of updating the display with the new set of products
   function updateDisplay() {
     // remove the previous contents of the <main> element
-    while (main.firstChild) {
-      main.removeChild(main.firstChild);
-    }
+    main.textContent = "";
 
     // if no products match the search term, display a "No results to display" message
     if (finalGroup.length === 0) {
