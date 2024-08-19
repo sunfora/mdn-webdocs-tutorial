@@ -4,17 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple DOM example</title>
-
-    <style>
-      .highlight {
-        color: white;
-        background-color: black;
-        padding: 10px;
-        width: 250px;
-        text-align: center;
-      }
-    </style>
-
   </head>
   <body>
       <section>
@@ -49,7 +38,17 @@
       linkPara.remove();
 
       // we can manipulate styles by using classes and id's
-      para.classList.add("highlight");
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(`
+        p {
+          color: white;
+          background-color: black;
+          padding: 10px;
+          width: 250px;
+          text-align: center;
+        }
+      `);
+      document.adoptedStyleSheets = [sheet];
     </script>
   </body>
 </html>
