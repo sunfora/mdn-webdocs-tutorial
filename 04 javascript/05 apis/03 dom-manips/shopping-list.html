@@ -35,6 +35,25 @@
       const button = document.querySelector("button");
       const input = document.querySelector("input");
 
+      function addItem() {
+        const itemText = input.value;
+        input.value = "";
+
+        const item = document.createElement("li");
+        const text = document.createElement("span");
+        const cancel = document.createElement("button");
+
+        text.textContent = itemText;
+        cancel.textContent = "delete";
+
+        item.append(text);
+        item.append(cancel);
+
+        list.append(item);
+
+        input.focus();
+      }
+      button.addEventListener("click", addItem);
     </script>
   </body>
 </html>
