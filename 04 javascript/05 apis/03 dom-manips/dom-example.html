@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple DOM example</title>
+
+    <style>
+      .highlight {
+        color: white;
+        background-color: black;
+        padding: 10px;
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+
   </head>
   <body>
       <section>
@@ -37,13 +48,8 @@
       // and this will esentially remove the node
       linkPara.remove();
 
-      // we can change inline styles
-      // they will override normal ones as expected
-      para.style.color = "white";
-      para.style.backgroundColor = "black";
-      para.style.padding = "10px";
-      para.style.width = "250px";
-      para.style.textAlign = "center";
+      // we can manipulate styles by using classes and id's
+      para.classList.add("highlight");
     </script>
   </body>
 </html>
