@@ -59,29 +59,28 @@ function initialize(products) {
     // it again — just return out of the function
     if (category.value === lastCategory && searchTerm.value.trim() === lastSearch) {
       return;
+    }
+    // update the record of last category and search term
+    lastCategory = category.value;
+    lastSearch = searchTerm.value.trim();
+    // In this case we want to select all products, then filter them by the search
+    // term, so we just set categoryGroup to the entire JSON object, then run selectProducts()
+    if (category.value === 'All') {
+      categoryGroup = products;
+      selectProducts();
+    // If a specific category is chosen, we need to filter out the products not in that
+    // category, then put the remaining products inside categoryGroup, before running
+    // selectProducts()
     } else {
-      // update the record of last category and search term
-      lastCategory = category.value;
-      lastSearch = searchTerm.value.trim();
-      // In this case we want to select all products, then filter them by the search
-      // term, so we just set categoryGroup to the entire JSON object, then run selectProducts()
-      if (category.value === 'All') {
-        categoryGroup = products;
-        selectProducts();
-      // If a specific category is chosen, we need to filter out the products not in that
-      // category, then put the remaining products inside categoryGroup, before running
-      // selectProducts()
-      } else {
-        // the values in the <option> elements are uppercase, whereas the categories
-        // store in the JSON (under "type") are lowercase. We therefore need to convert
-        // to lower case before we do a comparison
-        const lowerCaseType = category.value.toLowerCase();
-        // Filter categoryGroup to contain only products whose type includes the category
-        categoryGroup = products.filter( product => product.type === lowerCaseType );
+      // the values in the <option> elements are uppercase, whereas the categories
+      // store in the JSON (under "type") are lowercase. We therefore need to convert
+      // to lower case before we do a comparison
+      const lowerCaseType = category.value.toLowerCase();
+      // Filter categoryGroup to contain only products whose type includes the category
+      categoryGroup = products.filter( product => product.type === lowerCaseType );
 
-        // Run selectProducts() after the filtering has been done
-        selectProducts();
-      }
+      // Run selectProducts() after the filtering has been done
+      selectProducts();
     }
   }
 
