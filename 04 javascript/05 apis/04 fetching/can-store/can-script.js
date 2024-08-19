@@ -50,16 +50,17 @@ function initialize(products) {
     // the experience
     e.preventDefault();
 
-    // Set these back to empty arrays, to clear out the previous search
-    categoryGroup = [];
-    finalGroup = [];
-
     // if the category and search term are the same as they were the last time a
     // search was run, the results will be the same, so there is no point running
     // it again — just return out of the function
     if (category.value === lastCategory && searchTerm.value.trim() === lastSearch) {
       return;
     }
+
+    // Set these back to empty arrays, to clear out the previous search
+    categoryGroup = [];
+    finalGroup = [];
+
     // update the record of last category and search term
     lastCategory = category.value;
     lastSearch = searchTerm.value.trim();
