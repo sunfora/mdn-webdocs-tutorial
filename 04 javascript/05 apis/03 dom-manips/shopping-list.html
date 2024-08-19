@@ -53,7 +53,15 @@
 
         input.focus();
       }
+
+      function deleteItem(e) {
+        if (e.target.tagName === "BUTTON") {
+          e.target.parentElement.remove();
+        }
+      }
+
       button.addEventListener("click", addItem);
+      list.addEventListener("click", deleteItem);
     </script>
   </body>
 </html>
