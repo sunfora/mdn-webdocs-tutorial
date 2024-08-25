@@ -8,8 +8,10 @@ if (ctx === null) {
     throw Error("canvas 2d is not supported");
 }
 
-ctx.fillStyle = "rgb(0 0 0)";
-ctx.fillRect(0, 0, width, height);
+function clear(ctx) {
+  ctx.fillStyle = "rgb(0 0 0)";
+  ctx.fillRect(0, 0, width, height);
+}
 
 function drawRects(ctx) {
   ctx.fillStyle = "rgb(255 0 0)";
@@ -43,4 +45,46 @@ function drawPath(ctx) {
   ctx.fill();
 }
 
-drawPath(ctx);
+function degToRad(degrees) {
+  return (degrees * Math.PI) / 180;
+}
+
+function drawTriangle(ctx, x, y, angle, sideLength) {
+  ctx.fillStyle = "rgb(255 0 0)";
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+
+  const radius = sideLength / Math.sqrt(3);
+  
+  const pointAtAngle = angle => {
+    return {
+      x: x + radius * Math.sin(degToRad(-angle)),
+      y: y + radius * Math.cos(degToRad(-angle))
+    };
+  };
+
+  const first  = pointAtAngle(angle); 
+  const second = pointAtAngle(angle + 120); 
+  const third  = pointAtAngle(angle + 240); 
+  
+  ctx.moveTo(first.x, first.y);
+  ctx.lineTo(second.x, second.y);
+  ctx.lineTo(third.x, third.y);
+  ctx.lineTo(first.x, first.y);
+
+  ctx.stroke();
+  ctx.fill();
+}
+
+let angle = 1;
+
+function loop() {
+  clear(ctx);
+  drawPath(ctx);
+  drawTriangle(ctx, 150, 150, angle, 50);
+
+  angle += 1;
+  requestAnimationFrame(loop);
+}
+
+loop();
