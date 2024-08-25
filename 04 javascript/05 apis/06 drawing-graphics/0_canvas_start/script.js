@@ -11,20 +11,36 @@ if (ctx === null) {
 ctx.fillStyle = "rgb(0 0 0)";
 ctx.fillRect(0, 0, width, height);
 
-ctx.fillStyle = "rgb(255 0 0)";
-ctx.fillRect(50, 50, 100, 150);
+function drawRects(ctx) {
+  ctx.fillStyle = "rgb(255 0 0)";
+  ctx.fillRect(50, 50, 100, 150);
 
-ctx.fillStyle = "rgb(0 255 0)";
-ctx.fillRect(75, 75, 100, 100);
+  ctx.fillStyle = "rgb(0 255 0)";
+  ctx.fillRect(75, 75, 100, 100);
 
-ctx.fillStyle = "rgb(255 0 255 / 75%)";
-ctx.fillRect(25, 100, 175, 50);
+  ctx.fillStyle = "rgb(255 0 255 / 75%)";
+  ctx.fillRect(25, 100, 175, 50);
 
-ctx.fillRect(200, 200, 50, 50);
-ctx.fillRect(200, 250, 50, 50);
-ctx.fillRect(200, 350, 50, 50);
+  ctx.fillRect(200, 200, 50, 50);
+  ctx.fillRect(200, 250, 50, 50);
+  ctx.fillRect(200, 350, 50, 50);
 
-ctx.strokeStyle = "rgb(255 255 255)";
-ctx.lineWidth = 5;
-ctx.strokeRect(25, 25, 175, 200);
+  ctx.strokeStyle = "rgb(255 255 255)";
+  ctx.lineWidth = 5;
+  ctx.strokeRect(25, 25, 175, 200);
+}
 
+function drawPath(ctx) {
+  ctx.strokeStyle = "rgb(255 0 0)";
+  ctx.fillStyle = "rgb(255 0 0)";
+  ctx.beginPath();
+  ctx.moveTo(50, 50);
+  // draw your path
+  ctx.lineTo(50, 100);
+  ctx.lineTo(100, 150);
+  ctx.lineTo(150, 100);
+  ctx.stroke();
+  ctx.fill();
+}
+
+drawPath(ctx);
