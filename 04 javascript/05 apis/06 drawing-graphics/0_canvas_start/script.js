@@ -76,12 +76,25 @@ function drawTriangle(ctx, x, y, angle, sideLength) {
   ctx.fill();
 }
 
+function drawCircles(ctx) {
+  ctx.fillStyle = "rgb(0 0 255)";
+  ctx.beginPath();
+  ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+  ctx.fill();
+
+  ctx.fillStyle = "yellow";
+  ctx.beginPath();
+  ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+  ctx.lineTo(200, 106);
+  ctx.fill();
+}
+
 let angle = 1;
 
 function loop() {
   clear(ctx);
-  drawPath(ctx);
-  drawTriangle(ctx, 150, 150, angle, 50);
+  drawCircles(ctx);
+  drawTriangle(ctx, 150, 106, angle, 50 * Math.sqrt(3));
 
   angle += 1;
   requestAnimationFrame(loop);
