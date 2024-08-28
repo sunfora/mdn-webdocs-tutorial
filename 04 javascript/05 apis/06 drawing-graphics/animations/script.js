@@ -20,6 +20,7 @@ let length = 250;
 let moveOffset = 20;
 
 function drawTriangle(x, y, length) {
+  ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(x + length, y);
   const triHeight = (length / 2) * Math.tan(degToRad(60));
@@ -28,10 +29,18 @@ function drawTriangle(x, y, length) {
   ctx.fill();
 }
 
+function drawPacman(x, y, length) {
+  ctx.beginPath();
+  ctx.arc(x, y, length, -Math.PI / 4, Math.PI / 4, true);
+  ctx.lineTo(x, y);
+  ctx.fill();
+}
+
+
 for (let i = 0; i < length; i++) {
   ctx.fillStyle = `rgb(${255 - length} 0 ${255 - length} / 90%)`;
-  ctx.beginPath();
-  drawTriangle(moveOffset, moveOffset, length);
+  ctx.strokeStyle = `white`;
+  drawPacman(moveOffset, moveOffset, length);
   length--;
   moveOffset += 1;
   ctx.rotate(degToRad(5));
