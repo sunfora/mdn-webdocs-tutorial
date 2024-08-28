@@ -8,6 +8,7 @@ if (ctx === null) {
     throw Error("canvas 2d is not supported");
 }
 
+
 function clear(ctx) {
   ctx.fillStyle = "rgb(0 0 0)";
   ctx.fillRect(0, 0, width, height);
@@ -89,12 +90,36 @@ function drawCircles(ctx) {
   ctx.fill();
 }
 
+function strokeText(ctx) {
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 1;
+  ctx.font = "36px arial";
+  ctx.strokeText("Canvas text", 350, 50);
+
+  ctx.fillStyle = "red";
+  ctx.font = "48px georgia";
+  ctx.fillText("Canvas text", 350, 150);
+}
+
+const image = new Image();
+image.src = "firefox.png";
+
+function drawImage(ctx) {
+  if (image.complete) {
+    ctx.drawImage(image, 20, 20, 185, 175, 300, 200, 185, 125);
+  }
+}
+
+canvas.setAttribute("aria-label", "Canvas text");
+
 let angle = 1;
 
 function loop() {
   clear(ctx);
+  drawImage(ctx);
   drawCircles(ctx);
   drawTriangle(ctx, 150, 106, angle, 50 * Math.sqrt(3));
+  strokeText(ctx);
 
   angle += 1;
   requestAnimationFrame(loop);
