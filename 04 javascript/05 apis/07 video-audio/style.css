@@ -13,28 +13,30 @@ video {
   border: 1px solid black;
 }
 
-p {
-  position: absolute;
-  top: 310px;
-}
-
 .player {
-  position: absolute;
+  position: relative;
+  width: max-content;
 }
 
 .controls {
-  visibility: hidden;
-  opacity: 0.5;
-  width: 400px;
   border-radius: 10px;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  margin-left: -200px;
   background-color: black;
   box-shadow: 3px 3px 5px black;
   transition: 1s all;
   display: flex;
+  width: 400px;
+}
+
+audio + .controls {
+  visibility: hidden;
+  opacity: 0.5;
+}
+
+video + .controls {
+  position: absolute;
+  left: calc((100% - 400px) / 2);
+  right: calc((100% - 400px) / 2);
+  top: 80%;
 }
 
 .player:hover .controls,

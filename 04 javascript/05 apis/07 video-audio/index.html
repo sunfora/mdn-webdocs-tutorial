@@ -7,8 +7,8 @@
   	<link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div class="player">
-      <video controls>
+    <div class="player" id="sintel">
+      <video controls class="media">
         <source src="video/sintel-short.mp4" type="video/mp4" />
         <source src="video/sintel-short.webm" type="video/webm" />
         <!-- fallback content here -->
@@ -25,6 +25,23 @@
       </div>
     </div>
     <p>Sintel &copy; copyright Blender Foundation | <a href="https://studio.blender.org/films/sintel/">studio.blender.org/films/sintel/</a>.</p>
+    <div class="player" id="tux">
+      <audio controls class="media">
+        <source src="audio/tux.mp3" type="audio/mp3" />
+        <!-- fallback content here -->
+      </audio>
+      <div class="controls">
+        <button class="play" data-icon="P" aria-label="play pause toggle"></button>
+        <button class="stop" data-icon="S" aria-label="stop"></button>
+        <div class="timer">
+          <div></div>
+          <span aria-label="timer">00:00</span>
+        </div>
+        <button class="rwd" data-icon="B" aria-label="rewind"></button>
+        <button class="fwd" data-icon="F" aria-label="fast forward"></button>
+      </div>
+    </div>
+    <p> Tux Racer — Race 1 &copy; Joseph Toscano </p>
     <script src="custom-player.js"></script>
   </body>
 </html>
