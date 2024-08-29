@@ -153,14 +153,27 @@ continiousControls.push(backward);
 media.addEventListener("timeupdate", setTime);
 
 function setTime() {
-  const minutes = Math.floor(media.currentTime / 60);
-  const seconds = Math.floor(media.currentTime - minutes * 60);
+  /* seconds in hour */
+  const sih = 60 * 60;
+  /* seconds in minute */
+  const sim = 60;
+
+  const hours = Math.floor(media.currentTime / sih);
+  const withoutHours = media.currentTime - hours * sih;
+
+  const minutes = Math.floor(withoutHours / sim);
+  const withoutMinutes = withoutHours - minutes * sim;
+
+  const seconds = Math.floor(withoutMinutes);
 
   const minuteValue = minutes.toString().padStart(2, "0");
   const secondValue = seconds.toString().padStart(2, "0");
-
-  const mediaTime = `${minuteValue}:${secondValue}`;
-  timer.textContent = mediaTime;
+  
+  if (hours > 0) {
+    timer.textContent = `${hours}:${minuteValue}:${secondValue}`;
+  } else {
+    timer.textContent = `${minuteValue}:${secondValue}`;
+  }
 
   const barLength =
     timerWrapper.clientWidth * (media.currentTime / media.duration);
