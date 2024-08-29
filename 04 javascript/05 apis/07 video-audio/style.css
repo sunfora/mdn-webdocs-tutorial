@@ -19,17 +19,14 @@ video {
 }
 
 .controls {
+  visibility: hidden;
+  opacity: 0.5;
   border-radius: 10px;
   background-color: black;
   box-shadow: 3px 3px 5px black;
   transition: 1s all;
   display: flex;
   width: 400px;
-}
-
-audio + .controls {
-  visibility: hidden;
-  opacity: 0.5;
 }
 
 video + .controls {
