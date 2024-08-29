@@ -70,10 +70,10 @@ document.addEventListener("touchend", stopContinious);
 
 let continiousControls = [];
 
-function stopContinious() {
+function stopContinious(event) {
   for (const control of continiousControls) {
     if (control.active) {
-      control.stop();
+      control.stop(event);
     }
   }
 }
@@ -83,7 +83,7 @@ function startContinious(event) {
   for (const control of continiousControls) {
     if (   control.targets?.includes(event.target)
         || control.elem === event.target) {
-      control.start();
+      control.start(event);
       break;
     }
   }
@@ -186,11 +186,12 @@ const timerBarMover = {
   active: false,
   controller: null,
 
-  start() {
+  start(event) {
     if (!this.active) {
       this.active = true;
       pauseMedia();
       this.controller = new AbortController();
+      this.action(event);
       document.addEventListener(
         "mousemove", (e) => this.action(e), {signal: this.controller.signal}
       );
