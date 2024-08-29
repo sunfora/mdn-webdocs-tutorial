@@ -103,9 +103,17 @@ button {
 }
 
 .timer span {
+  line-height: 1.5em;
+  top: calc((100% - 1.5em) / 2);
+  bottom: calc((100% - 1.5em) / 2);
   position: absolute;
   z-index: 3;
   left: 19px;
+  user-select: none;
+}
+
+.timer span.can-copy {
+  cursor: copy;
 }
 
 button:hover,button:focus {
