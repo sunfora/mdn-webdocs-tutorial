@@ -101,6 +101,7 @@ class Mover {
     if (!this.active) {
       this.active = true;
       this.elem.classList.add("active");
+      this.action();
       this.interval = setInterval(() => this.action(), this.speed);
     }
   }
